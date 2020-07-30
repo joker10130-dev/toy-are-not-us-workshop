@@ -1,19 +1,76 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <span>First input label </span>
-  <input formControlName="firstInput" />
-  <div *ngIf="loginForm.controls.firstInput.errors">
-    <a *ngIf="loginForm.controls.firstInput.errors.required">
-      First input is required message
-    </a>
+<br />
+<h1 style="margin-left: 15px;">Search Toy</h1>
+<div>
+  <span style="margin-left: 15px;">Age </span>
+  <span style="margin-left: 210px;">Gender </span>
+</div>
+<form class="form-input" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <!-- <span>First input label </span> -->
+
+  <div class="ui left icon input" formControlName="firstInput">
+    <input type="text" placeholder="Search age..." />
+    <i class="users icon"></i>
+
+    <div *ngIf="loginForm.controls.firstInput.errors">
+      <a *ngIf="loginForm.controls.firstInput.errors.required">
+        First input is required message
+      </a>
+    </div>
+    <!-- <span>Second input label </span> -->
+    <div
+      style="margin-left: 25px;"
+      class="ui left icon input"
+      formControlName="secondInput"
+    >
+      <input type="text" placeholder="Search gender..." />
+      <i class="venus mars icon"></i>
+      <div *ngIf="loginForm.controls.secondInput.errors">
+        <a *ngIf="loginForm.controls.secondInput.errors.required">
+          Second input is required message
+        </a>
+      </div>
+      <button style="margin-left: 15px;" class="ui primary basic button">
+        Search
+      </button>
+    </div>
   </div>
   <br />
-  <span>Second input label </span>
-  <input formControlName="secondInput" />
+
+  <!-- <input formControlName="secondInput" />
   <div *ngIf="loginForm.controls.secondInput.errors">
     <a *ngIf="loginForm.controls.secondInput.errors.required">
       Second input is required message
     </a>
-  </div>
+  </div> -->
+
   <br />
-  <button>Submit</button>
+  <!-- <button>Submit</button> -->
 </form>
+
+<table class="ui basic table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>43 Piece dinner SetFemale3</td>
+      <td>3_to_5</td>
+      <td>12.95</td>
+    </tr>
+
+    <tr>
+      <td>Balance Training Bicycle</td>
+      <td>3_to_5</td>
+      <td>119.95</td>
+    </tr>
+    <tr>
+      <td>Best Friends Forever Magnetic Dress U.</td>
+      <td>3_to_5</td>
+      <td>24.95</td>
+    </tr>
+  </tbody>
+</table>
