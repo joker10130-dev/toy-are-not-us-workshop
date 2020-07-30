@@ -2,30 +2,40 @@
 Library    SeleniumLibrary
 
 *** Variables ***
+${URL}    http://localhost:4200/
 ${TOY_NAME}    Hoppity Ball 26 inch
 ${TOY_ID}    4
 ${QUANTITY}    1
 ${BRAND}    SportsFun
 ${GENDER}    Neutral
 ${AGE}    3_to_5
-${PRICE}    19.95 (USD)
+${PRICE}    29.95 (USD)
+${SHIPPING_FEE}    30.00 (THB)
+${TOTAL_PRICE}    974.32 (THB)
 ${SHIPPING_METHOD}    EMS
 ${PAYMENT_ELEMENT}    option_gsb
+${SLIP_ID}    20200730007
 
 *** Test Cases ***
 สั่งซื้อ Hoppity Ball 26 inch 1 ea ด้วย GSB Debit
-    #สั่งซื้อของเล่น    City Gargage Truck Lego    1    GSB
+    #สั่งซื้อของเล่น    ${TOY_NAME}    ${QUANTITY}    ${PAYMENT_ELEMENT}    ${SHIPPING_METHOD}
+    สั่งซื้อของเล่น Hoppity Ball 26 inch 1 ชิ้น จ่ายเงินโดย GSB ส่งแบบ EMS
+
+*** Keywords ***
+#-----------------------------------------------------------------------------
+# Main process.
+#-----------------------------------------------------------------------------
+สั่งซื้อของเล่น Hoppity Ball 26 inch 1 ชิ้น จ่ายเงินโดย GSB ส่งแบบ EMS
     เปิดเว็บ Toy R not Us ด้วย chrome และเลือกของเล่น
     ตรวจสอบรายละเอียดสินค้า และเลือกซื้อ 1 ชิ้น
     ตรวจสอบรายละเอียดสินค้าทั้งรถเข็น และกดปุ่ม Process to checkout
     เลือกช่องทางการชำระเงิน แล้วกดชำระเงิน
-
-*** Keywords ***
+    ตรวจสอบหน้าสุดท้าย และปิด Browser
 #-----------------------------------------------------------------------------
 # Search page.
 #-----------------------------------------------------------------------------
 เปิดเว็บ Toy R not Us ด้วย chrome
-    Open Browser    http://localhost:4200/    chrome
+    Open Browser    ${URL}    chrome
 เลือกอายุ
     Click Element    id=select_age
     Click Element    id=three_to_5
@@ -95,7 +105,6 @@ ${PAYMENT_ELEMENT}    option_gsb
     Wait Until Element Contains    id=price    ${PRICE}
 ตรวจสอบ Status : In Stock / Out of stock
     Wait Until Element Contains    id=status    In Stock
-
 เลือกวิธีจัดส่ง - EMS
     Wait Until Element Contains    id=shipping_method    ${SHIPPING_METHOD}
 กด Process to checkout
@@ -137,7 +146,7 @@ ${PAYMENT_ELEMENT}    option_gsb
 #-----------------------------------------------------------------------------
 # Payment page.
 #-----------------------------------------------------------------------------
-เช็คว่าอยู่ในหน้านี้แล้ว
+เช็คว่าอยู่ในหน้า Payment แล้ว
     Wait Until Page Contains Element    id=button_pay
     Wait Until Page Contains Element    id=option_gsb
 เลือกประเภทการชำระเงิน
@@ -147,7 +156,49 @@ ${PAYMENT_ELEMENT}    option_gsb
     Click Element    id=button_pay
 #-----------------------------------------------------------------------------
 เลือกช่องทางการชำระเงิน แล้วกดชำระเงิน
-    เช็คว่าอยู่ในหน้านี้แล้ว
+    เช็คว่าอยู่ในหน้า Payment แล้ว
     เลือกประเภทการชำระเงิน
     กดชำระเงิน
+#-----------------------------------------------------------------------------
+# Thanks you page.
+#-----------------------------------------------------------------------------
+เช็คว่าอยู่ในหน้า Thanks you แล้ว
+    Wait Until Page Contains Element    id=text_success
+ตรวจสอบ Slip ID YYYYMMDDSEQ
+    Wait Until Page Contains Element    id=slip_id
+    Wait Until Element Contains    id=slip_id    ${SLIP_ID}
+ตรวจสอบTotal Price
+    Wait Until Page Contains Element    id=total_price
+    Wait Until Element Contains    id=total_price    ${TOTAL_PRICE}
+ตรวจสอบ Shipping type
+    Wait Until Page Contains Element    id=shipping_type
+ตรวจสอบ Location: ที่อยู่ 1
+    Wait Until Element Contains    id=input_address1    บ้านเลขที่ 99/99 ซอยหัวหอม ถนนลูกรัง แขวงเสื้อตากไว้ เขตปลอดเชื้อ
+ตรวจสอบ Location: ที่อยู่ 2
+    Wait Until Element Contains    id=input_address2    -
+ตรวจสอบ Location: City
+    Wait Until Element Contains    id=input_city    -
+ตรวจสอบ Location: Province
+    Wait Until Element Contains    id=input_province    จังหวัดสามช่า
+ตรวจสอบ Location: รหัสไปรษณีย์
+    Wait Until Element Contains    id=input_postcode    99999
+กดปุ่มยืนยัน
+    Click Element    id=button_address
+ปิด Browser
+    Close Browser
+#-----------------------------------------------------------------------------
+ตรวจสอบ Location
+    ตรวจสอบ Location: ที่อยู่ 1
+    ตรวจสอบ Location: ที่อยู่ 2
+    ตรวจสอบ Location: City
+    ตรวจสอบ Location: Province
+    ตรวจสอบ Location: รหัสไปรษณีย์
+
+ตรวจสอบหน้าสุดท้าย และปิด Browser
+    เช็คว่าอยู่ในหน้า Thanks you แล้ว
+    ตรวจสอบ Slip ID YYYYMMDDSEQ
+    ตรวจสอบTotal Price
+    ตรวจสอบ Shipping type
+    ตรวจสอบ Location
+    ปิด Browser
 #-----------------------------------------------------------------------------

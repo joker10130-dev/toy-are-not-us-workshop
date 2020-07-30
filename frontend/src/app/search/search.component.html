@@ -51,7 +51,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let toy of toys; let i = index" (click)="onProductClick(toy)">
+    <tr *ngFor="let toy of toys; let i = index" (click)="onProductClick(toy)" routerLink="/product-detail" [queryParams]="{toy: toy | json }">
       <td>{{ toy.toyName }}</td>
       <td>{{ toy.gender }}</td>
       <td>{{ toy.age }}</td>
