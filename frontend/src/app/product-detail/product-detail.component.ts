@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from '../models/product';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -7,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) {}
-  public state: any;
+  public state: Product;
 
   ngOnInit(): void {
     this.state = JSON.parse(
