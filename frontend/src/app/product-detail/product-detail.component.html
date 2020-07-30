@@ -3,9 +3,10 @@
 <div class="card">
     <img src="http://www.logomaster.co.th/wp-content/uploads/2014/09/product-icon.png" style="width:20%"/>
   <div class="container">
-    <h3>{{ state.toyName }}</h3>
-    <td>{{ state.gender }}</td>
-    <td>{{ state.age }}</td>
-    <td>{{ state.price }}</td>
+    <td>Brand: {{ state.brand }}</td>
+    <td>Gender: {{ state.gender }}</td>
+    <td>Age: {{ state.age }}</td>
+    <td>Price: {{ state.price | currency }}</td>
+    <td>Availability: {{ state.availability ? 'In Stock' : 'Out of stock' }}</td>
   </div>
 </div>
