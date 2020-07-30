@@ -4,7 +4,12 @@
   <div class="horizontal">
     <div class="fullwidth">
       <label for="cars">Age </label>
-      <select id="age" style="width: 80%; margin: 10px;" (change)="changeAge($event)" formControlName="age">
+      <select
+        id="age"
+        style="width: 80%; margin: 10px;"
+        (change)="changeAge($event)"
+        formControlName="age"
+      >
         <option value="baby">Baby</option>
         <option value="3_to_5">3 to 5</option>
         <option value="6_to_8">6 to 8</option>
@@ -15,15 +20,22 @@
     </div>
     <div class="fullwidth">
       <span>Gender </span>
-      <select id="gender" style="width: 80%; margin: 10px;" (change)="changeGender($event)" formControlName="gender">
+      <select
+        id="gender"
+        style="width: 80%; margin: 10px;"
+        (change)="changeGender($event)"
+        formControlName="gender"
+      >
         <option value="neutral">Neutral</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
-      <i class="venus mars icon"></i>
+      <!-- <i class="venus mars icon"></i> -->
     </div>
+
     <div class="fullwidth">
-      <button class="ui primary basic button">
+      <i class="venus mars icon"></i>
+      <button style="margin-left: 15px;" class="ui primary basic button">
         Search
       </button>
     </div>
