@@ -23,4 +23,9 @@ export class ApiService {
       .get<Product[]>(this.url)
       .pipe(catchError(this.handleError('getAllToys', [])));
   }
+  getToy(id: number): Observable<Product[]> {
+    return this.http
+      .get<Product[]>(this.url + `&id=${id}`)
+      .pipe(catchError(this.handleError('getAllToys', [])));
+  }
 }
