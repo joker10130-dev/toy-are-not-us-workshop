@@ -6,3 +6,13 @@
 .ui primary basic button {
   margin-left: 15px;
 }
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.fullwidth {
+  width: 100%;
+}

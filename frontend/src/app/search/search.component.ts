@@ -10,15 +10,15 @@ import { Product } from '../models/product';
 })
 export class SearchComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, public service: ApiService) {}
-  public loginForm: FormGroup;
-  public firstInput = '';
-  public secondInput = '';
+  public searchForm: FormGroup;
+  public age = '';
+  public gender = '';
   public toys: Product[];
   ngOnInit(): void {
     this.getProducts();
-    this.loginForm = this.formBuilder.group({
-      firstInput: ['', Validators.required],
-      secondInput: ['', Validators.required],
+    this.searchForm = this.formBuilder.group({
+      age: ['', Validators.required],
+      gender: ['', Validators.required],
     });
   }
   getProducts(): void {
@@ -26,11 +26,27 @@ export class SearchComponent implements OnInit {
       return (this.toys = products);
     });
   }
+  changeAge(e: any): void {
+    this.f.age.setValue(e.target.value, {
+      onlySelf: true,
+    });
+    console.log(this.f.age.value);
+  }
+  changeGender(e: any): void {
+    this.f.gender.setValue(e.target.value, {
+      onlySelf: true,
+    });
+    console.log(this.f.gender.value);
+  }
+  onProductClick(toy: Product): void {
+    console.log(toy);
+  }
   private get f(): any {
-    return this.loginForm.controls;
+    return this.searchForm.controls;
   }
   public onSubmit(): void {
-    this.firstInput = this.f.firstInput.value;
-    this.secondInput = this.f.secondInput.value;
+    this.age = this.f.age.value;
+    this.gender = this.f.gender.value;
+    console.log(this.age, this.gender);
   }
 }

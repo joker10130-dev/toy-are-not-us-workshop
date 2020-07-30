@@ -1,76 +1,49 @@
 <br />
 <h1 style="margin-left: 15px;">Search Toy</h1>
-<div>
-  <span style="margin-left: 15px;">Age </span>
-  <span style="margin-left: 210px;">Gender </span>
-</div>
-<form class="form-input" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <!-- <span>First input label </span> -->
-
-  <div class="ui left icon input" formControlName="firstInput">
-    <input type="text" placeholder="Search age..." />
-    <i class="users icon"></i>
-
-    <div *ngIf="loginForm.controls.firstInput.errors">
-      <a *ngIf="loginForm.controls.firstInput.errors.required">
-        First input is required message
-      </a>
+<form class="form-input" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <div class="horizontal">
+    <div class="fullwidth">
+      <label for="cars">Age </label>
+      <select id="age" style="width: 80%; margin: 10px;" (change)="changeAge($event)" formControlName="age">
+        <option value="baby">Baby</option>
+        <option value="3_to_5">3 to 5</option>
+        <option value="6_to_8">6 to 8</option>
+        <option value="Toddler">Toddler</option>
+        <option value="over8">Over 8</option>
+      </select>
+      <i class="users icon"></i>
     </div>
-    <!-- <span>Second input label </span> -->
-    <div
-      style="margin-left: 25px;"
-      class="ui left icon input"
-      formControlName="secondInput"
-    >
-      <input type="text" placeholder="Search gender..." />
+    <div class="fullwidth">
+      <span>Gender </span>
+      <select id="gender" style="width: 80%; margin: 10px;" (change)="changeGender($event)" formControlName="gender">
+        <option value="neutral">Neutral</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
       <i class="venus mars icon"></i>
-      <div *ngIf="loginForm.controls.secondInput.errors">
-        <a *ngIf="loginForm.controls.secondInput.errors.required">
-          Second input is required message
-        </a>
-      </div>
-      <button style="margin-left: 15px;" class="ui primary basic button">
+    </div>
+    <div class="fullwidth">
+      <button class="ui primary basic button">
         Search
       </button>
     </div>
   </div>
-  <br />
-
-  <!-- <input formControlName="secondInput" />
-  <div *ngIf="loginForm.controls.secondInput.errors">
-    <a *ngIf="loginForm.controls.secondInput.errors.required">
-      Second input is required message
-    </a>
-  </div> -->
-
-  <br />
-  <!-- <button>Submit</button> -->
 </form>
-
 <table class="ui basic table">
   <thead>
     <tr>
       <th>Name</th>
+      <th>Gender</th>
       <th>Age</th>
       <th>Price</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>43 Piece dinner SetFemale3</td>
-      <td>3_to_5</td>
-      <td>12.95</td>
-    </tr>
-
-    <tr>
-      <td>Balance Training Bicycle</td>
-      <td>3_to_5</td>
-      <td>119.95</td>
-    </tr>
-    <tr>
-      <td>Best Friends Forever Magnetic Dress U.</td>
-      <td>3_to_5</td>
-      <td>24.95</td>
+    <tr *ngFor="let toy of toys; let i = index" (click)="onProductClick(toy)">
+      <td>{{ toy.toyName }}</td>
+      <td>{{ toy.gender }}</td>
+      <td>{{ toy.age }}</td>
+      <td>{{ toy.price }}</td>
     </tr>
   </tbody>
 </table>
