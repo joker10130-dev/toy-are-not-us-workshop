@@ -14,7 +14,6 @@ export class SearchComponent implements OnInit {
   public firstInput = '';
   public secondInput = '';
   public toys: Product[];
-  
   ngOnInit(): void {
     this.getProducts();
     this.loginForm = this.formBuilder.group({
