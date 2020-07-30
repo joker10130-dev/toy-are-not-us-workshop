@@ -1,1 +1,19 @@
-<p>search works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <span>First input label </span>
+  <input formControlName="firstInput" />
+  <div *ngIf="loginForm.controls.firstInput.errors">
+    <a *ngIf="loginForm.controls.firstInput.errors.required">
+      First input is required message
+    </a>
+  </div>
+  <br />
+  <span>Second input label </span>
+  <input formControlName="secondInput" />
+  <div *ngIf="loginForm.controls.secondInput.errors">
+    <a *ngIf="loginForm.controls.secondInput.errors.required">
+      Second input is required message
+    </a>
+  </div>
+  <br />
+  <button>Submit</button>
+</form>
