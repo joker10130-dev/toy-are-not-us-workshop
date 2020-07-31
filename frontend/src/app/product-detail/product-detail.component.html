@@ -11,8 +11,8 @@
     <td id=gender>Gender: {{ state.gender }}</td>
     <td id=age>Age: {{ state.age }}</td>
     <td id=price>Price: {{ state.price | currency }}</td>
-    <td id=status>
-      Availability: {{ state.availability ? "In Stock" : "Out of stock" }}
+    <td>
+      <span>Availability: </span><span id=status>{{ state.availability ? "In Stock" : "Out of Stock" }}</span>
     </td>
     <form id=select_quantity class="form-input" [formGroup]="productForm" (ngSubmit)="onSubmit(quantityRef.value)">
       <input
