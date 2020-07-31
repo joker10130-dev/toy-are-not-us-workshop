@@ -5,61 +5,30 @@
   <thead>
     <tr>
       <th class="single line">Items</th>
-      <th>Availability</th>
       <th>Quantity</th>
-      <th>Review Rating</th>
-
       <th style="text-align: right;">Price (THB)</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let cart of carts">
       <td>
         <p style="text-align: left;" class="ui center aligned header">
-          Earth DVD Game by VideoVroom (Neutral | over 8)
+          {{cart.toyName}} by {{cart.brand}} ({{cart.gender}} | {{cart.age}})
         </p>
       </td>
-      <td class="single line">
-        <i style="color: green; margin-left: 25px;" class="check icon"></i>
-      </td>
       <td>
-        1
-      </td>
-      <td class="right aligned">
-        <div class="rating">
-          <i class="star icon"></i>
-          <i class="star icon"></i>
-          <i class="star icon"></i>
-        </div>
+        <input
+          placeholder="1"
+          required
+          type="number"
+          [(value)]="cart.quantity"
+          min="1"
+          max="100"
+        />
       </td>
       <td>
         <div class="toy-price">
-          1,103.23
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p style="text-align: left;" class="ui center aligned header">
-          43 Piece dinner Set by CoolKidz (Female | 3-5)
-        </p>
-      </td>
-      <td class="single line">
-        <i style="color: green; margin-left: 25px;" class="check icon"></i>
-      </td>
-      <td>
-        1
-      </td>
-      <td class="right aligned">
-        <div class="rating">
-          <i class="star icon"></i>
-          <i class="star icon"></i>
-          <i class="star icon"></i>
-        </div>
-      </td>
-      <td>
-        <div class="toy-price">
-          408.31
+          {{cart.price * 31.53 | number : '1.2'}}
         </div>
       </td>
     </tr>
@@ -71,23 +40,18 @@
   </tfoot>
 </table>
 
-<p style="text-align: left; margin-left: 15px;">
-  Shipping Method: Kerry Express<br />Shipping Fee: 35.00 THB <br /><br />
+<div style="text-align: left; margin-left: 15px;">
+  Shipping Method: EMS<br />Shipping Fee: {{shippingFee | number : '1.2'}} THB <br /><br />
   <b>Select Payment Methods</b>
   <span class="subtotal">
     <h4>Order Summary</h4>
     <br />
 
-    Item (2 items): 1,511.54 THB<br /><br />Shipping Fee: 35.00 THB<br />Order
-    Total: 1,511.54 THB
+    Item ({{allItemQuantities}} items): {{totalPrice * 31.53 | number : '1.2'}} THB<br /><br />Shipping Fee: {{shippingFee | number : '1.2'}} THB<br />Order
+    Total: {{(totalPrice * 31.53) + shippingFee | number : '1.2'}} THB
     <br />
-    <button style="margin-top: 5px;" class="ui orange button">
-      <i class="credit card icon"></i>
-      Place your Order
-    </button>
-    <br /><br />
   </span>
-</p>
+</div>
 
 <div class="ui form" style="margin-left: 15px;">
   <div class="inline fields">
@@ -150,3 +114,8 @@
     </div>
   </div>
 </div>
+
+<button style="margin-top: 5px;" class="ui orange button" (click)="placeOrder()">
+      <i class="credit card icon"></i>
+      Place your Order
+</button>
