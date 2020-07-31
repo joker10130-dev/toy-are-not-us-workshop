@@ -1,0 +1,19 @@
+.rating {
+  color: gold;
+  text-align: center;
+}
+
+.ui center aligned header {
+  text-align: left;
+}
+
+.toy-price {
+  text-align: right;
+}
+
+.subtotal {
+  float: right;
+  margin-right: 145px;
+  font-weight: bolder;
+  font-size: 15px;
+}
