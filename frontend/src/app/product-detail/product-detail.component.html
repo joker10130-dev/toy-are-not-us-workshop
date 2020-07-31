@@ -1,12 +1,31 @@
 <br />
 <h1 style="margin-left: 15px;">{{ state.toyName }}</h1>
 <div class="card">
-    <img src="http://www.logomaster.co.th/wp-content/uploads/2014/09/product-icon.png" style="width:20%"/>
+  <img
+    src="http://www.logomaster.co.th/wp-content/uploads/2014/09/product-icon.png"
+    style="width: 20%;"
+  />
   <div class="container">
     <td>Brand: {{ state.brand }}</td>
     <td>Gender: {{ state.gender }}</td>
     <td>Age: {{ state.age }}</td>
     <td>Price: {{ state.price | currency }}</td>
-    <td>Availability: {{ state.availability ? 'In Stock' : 'Out of stock' }}</td>
+    <td>
+      Availability: {{ state.availability ? "In Stock" : "Out of stock" }}
+    </td>
+
+    <input
+      placeholder="toy quantity"
+      required
+      type="number"
+      value=""
+      min="1"
+      max="100"
+    />
+    <br />
+    <button class="ui orange button">
+      <i class="shopping cart icon"></i>
+      Add to cart
+    </button>
   </div>
 </div>
