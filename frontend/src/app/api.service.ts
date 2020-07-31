@@ -4,17 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Product } from './models/product';
-
-export interface ToyCart {
-  toyId: number;
-  toyName: string;
-  gender: string;
-  age: string;
-  price: number;
-  availability: boolean;
-  brand: string;
-  quantity: number;
-}
+import { ToyCart } from './models/toy-cart';
 
 @Injectable({
   providedIn: 'root',
@@ -51,5 +41,10 @@ export class ApiService {
         headers: { 'Content-Type': 'application/json' },
       })
       .pipe(catchError(this.handleError(`setCart ${id}`)));
+  }
+  removeCart(id: number): Observable<ToyCart[]> {
+    return this.http
+      .delete<ToyCart[]>(this.url + '-cart' + `&id=${id}`)
+      .pipe(catchError(this.handleError(`removeCart`, [])));
   }
 }

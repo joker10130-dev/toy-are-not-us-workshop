@@ -11,79 +11,36 @@
       <th class="single line">Items</th>
       <th>Availability</th>
       <th>Quantity</th>
-      <th>Review Rating</th>
 
       <th style="text-align: right;">Price (THB)</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let cart of carts">
       <td>
         <p style="text-align: left;" class="ui center aligned header">
-          Earth DVD Game by VideoVroom (Neutral | over 8)
+          {{cart.toyName}} by {{cart.brand}} ({{cart.gender}} | {{cart.age}})
         </p>
-        <div class="ui red horizontal label">
+        <div class="ui red horizontal label remove" (click)="removeCart(cart.toyId)">
           <i class="trash alternate icon"></i>Remove
         </div>
       </td>
       <td class="single line">
-        <i style="color: green; margin-left: 25px;" class="check icon"></i>
+        <i *ngIf="cart.availability" style="color: green; margin-left: 25px;" class="check icon"></i>
       </td>
       <td>
         <input
           placeholder="1"
           required
           type="number"
-          value=""
+          [(value)]="cart.quantity"
           min="1"
           max="100"
         />
       </td>
-      <td class="right aligned">
-        <div class="rating">
-          <i class="star icon"></i>
-          <i class="star icon"></i>
-          <i class="star icon"></i>
-        </div>
-      </td>
       <td>
         <div class="toy-price">
-          1,103.23
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p style="text-align: left;" class="ui center aligned header">
-          43 Piece dinner Set by CoolKidz (Female | 3-5)
-        </p>
-        <div class="ui red horizontal label">
-          <i class="trash alternate icon"></i>Remove
-        </div>
-      </td>
-      <td class="single line">
-        <i style="color: green; margin-left: 25px;" class="check icon"></i>
-      </td>
-      <td>
-        <input
-          placeholder="1"
-          required
-          type="number"
-          value=""
-          min="1"
-          max="100"
-        />
-      </td>
-      <td class="right aligned">
-        <div class="rating">
-          <i class="star icon"></i>
-          <i class="star icon"></i>
-          <i class="star icon"></i>
-        </div>
-      </td>
-      <td>
-        <div class="toy-price">
-          408.31
+          {{cart.price * 31.53 | number : '1.2'}}
         </div>
       </td>
     </tr>
@@ -98,7 +55,7 @@
 <p style="text-align: left; margin-left: 15px;">
   Shipping Method: Kerry Express<br />Shipping Fee: 35.00 THB
   <span class="subtotal">
-    Subtotal (2 items): 1,511.54 THB<br /><br />Shipping Fee: 35.00 THB
+    Subtotal ({{allItemQuantities}} items): 1,511.54 THB<br /><br />Shipping Fee: 35.00 THB
     <br />
     <button style="margin-top: 5px;" class="ui orange button">
       <i class="cart arrow down icon"></i>
