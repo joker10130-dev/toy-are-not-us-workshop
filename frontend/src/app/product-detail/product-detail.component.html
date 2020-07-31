@@ -14,8 +14,9 @@
     <td>
       <span>Availability: </span><span id=status>{{ state.availability ? "In Stock" : "Out of Stock" }}</span>
     </td>
-    <form id=select_quantity class="form-input" [formGroup]="productForm" (ngSubmit)="onSubmit(quantityRef.value)">
+    <form class="form-input" [formGroup]="productForm" (ngSubmit)="onSubmit(quantityRef.value)">
       <input
+        id=select_quantity
         placeholder="toy quantity"
         required
         type="number"
