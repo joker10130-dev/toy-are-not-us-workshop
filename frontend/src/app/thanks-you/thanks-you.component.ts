@@ -16,10 +16,17 @@ export class ThanksYouComponent implements OnInit {
   ) {}
   public state: ToyCart[];
   public address: Address;
+  public allItemQuantities = 0;
+  public totalPrice = 0;
+  public shippingFee = 35;
   ngOnInit(): void {
     this.state = JSON.parse(
       this.activatedRoute.snapshot.queryParamMap.get('order')
     );
+    for (const item of this.state) {
+      this.allItemQuantities += Number(item.quantity);
+      this.totalPrice += Number(item.price);
+    }
     console.log(this.state);
     this.getMockAddress();
     console.log(this.address);

@@ -8,10 +8,14 @@
   />
   <div class="container">
     <ul>
-      <li>Slip ID :12345</li>
-      <li>Client name :{{ address.fullName}}</li>
-      <li>Product :</li>
-      <li>Order total :</li>
+      <li>Slip ID :12345678910</li>
+      <li>Client name :{{ address.fullName }}</li>
+      <li>Product :<ul>
+        <li *ngFor="let order of state">
+          {{order.toyName}}
+        </li>
+      </ul></li>
+      <li>Order total : {{totalPrice}}</li>
       <li>Address 1 :{{ address.address1 }}</li>
       <li>Address 2 :{{ address.address2 }}</li>
 
@@ -19,11 +23,11 @@
       <li>City :{{ address.city }}</li>
       <li>Post code :{{ address.postCode }}</li>
 
-      <li>Payment Method :</li>
-      <li>Shipping Method :</li>
+      <li>Payment Method : GSB</li>
+      <li>Shipping Method : EMS</li>
       <ul>
         <br />
-        <button id="back_to_search" class="ui orange button">
+        <button id="back_to_search" class="ui orange button" [routerLink]="['/search']">
           Back to Search
         </button>
       </ul>
