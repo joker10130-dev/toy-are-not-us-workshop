@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ToyCart } from '../models/toy-cart';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,7 +9,7 @@ import { ToyCart } from '../models/toy-cart';
   styleUrls: ['./shopping-cart.component.css'],
 })
 export class ShoppingCartComponent implements OnInit {
-  constructor(private service: ApiService) {}
+  constructor(private service: ApiService, private router: Router) {}
   public carts: ToyCart[];
   public allItemQuantities = 0;
   public totalPrice = 0;
@@ -25,10 +26,16 @@ export class ShoppingCartComponent implements OnInit {
       return (this.carts = carts);
     });
   }
-  removeCart(id: number): void {
+  removeCart(id: string): void {
     this.service.removeCart(id).subscribe((responseData) => {
       console.log(responseData);
       window.location.reload();
+    });
+  }
+  checkout(id: string): void {
+    this.service.removeCart(id).subscribe((responseData) => {
+      console.log(responseData);
+      this.router.navigate(['shipping']);
     });
   }
 }

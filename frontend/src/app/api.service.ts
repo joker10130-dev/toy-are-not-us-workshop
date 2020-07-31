@@ -42,7 +42,7 @@ export class ApiService {
       })
       .pipe(catchError(this.handleError(`setCart ${id}`)));
   }
-  removeCart(id: number): Observable<ToyCart[]> {
+  removeCart(id: string): Observable<ToyCart[]> {
     return this.http
       .delete<ToyCart[]>(this.url + '-cart' + `&id=${id}`)
       .pipe(catchError(this.handleError(`removeCart`, [])));
