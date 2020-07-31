@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Product } from './models/product';
 import { ToyCart } from './models/toy-cart';
+import { Address } from './models/address';
 
 @Injectable({
   providedIn: 'root',
@@ -46,5 +47,15 @@ export class ApiService {
     return this.http
       .delete<ToyCart[]>(this.url + '-cart' + `&id=${id}`)
       .pipe(catchError(this.handleError(`removeCart`, [])));
+  }
+  getAddress(): Address {
+    return {
+      fullName: 'อัครเดช สิริวัฒน์',
+      address1: '179 ซอย รัชดาภิเษก 36',
+      address2: '-',
+      city: 'จตุจักร',
+      province: 'กรุงเทพ',
+      postCode: '10900'
+    };
   }
 }
