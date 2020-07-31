@@ -13,19 +13,21 @@
     <td>
       Availability: {{ state.availability ? "In Stock" : "Out of stock" }}
     </td>
-
-    <input
-      placeholder="toy quantity"
-      required
-      type="number"
-      value=""
-      min="1"
-      max="100"
-    />
-    <br />
-    <button class="ui orange button">
-      <i class="shopping cart icon"></i>
-      Add to cart
-    </button>
+    <form class="form-input" [formGroup]="productForm" (ngSubmit)="onSubmit(quantityRef.value)">
+      <input
+        placeholder="toy quantity"
+        required
+        type="number"
+        value="1"
+        min="1"
+        max="100"
+        #quantityRef
+      />
+      <br />
+      <button class="ui orange button">
+        <i class="shopping cart icon"></i>
+        Add to cart
+      </button>
+    </form>
   </div>
 </div>

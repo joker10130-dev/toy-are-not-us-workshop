@@ -9,7 +9,7 @@ import { Product } from '../models/product';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder, public service: ApiService) {}
+  constructor(private formBuilder: FormBuilder, private service: ApiService) {}
   public searchForm: FormGroup;
   public age = '';
   public gender = '';
