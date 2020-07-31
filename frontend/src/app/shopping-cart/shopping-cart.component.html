@@ -1,1 +1,108 @@
-<p>shopping-cart works!</p>
+<!-- <script>
+  $("input[type='number']").inputSpinner();
+</script>
+<script src="./src/bootstrap-input-spinner.js"></script> -->
+<br />
+<h1 style="margin-left: 15px;">Shopping Cart</h1>
+
+<table class="ui celled padded table">
+  <thead>
+    <tr>
+      <th class="single line">Items</th>
+      <th>Availability</th>
+      <th>Quantity</th>
+      <th>Review Rating</th>
+
+      <th style="text-align: right;">Price (THB)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <p style="text-align: left;" class="ui center aligned header">
+          Earth DVD Game by VideoVroom (Neutral | over 8)
+        </p>
+        <div class="ui red horizontal label">
+          <i class="trash alternate icon"></i>Remove
+        </div>
+      </td>
+      <td class="single line">
+        <i style="color: green; margin-left: 25px;" class="check icon"></i>
+      </td>
+      <td>
+        <input
+          placeholder="1"
+          required
+          type="number"
+          value=""
+          min="1"
+          max="100"
+        />
+      </td>
+      <td class="right aligned">
+        <div class="rating">
+          <i class="star icon"></i>
+          <i class="star icon"></i>
+          <i class="star icon"></i>
+        </div>
+      </td>
+      <td>
+        <div class="toy-price">
+          1,103.23
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p style="text-align: left;" class="ui center aligned header">
+          43 Piece dinner Set by CoolKidz (Female | 3-5)
+        </p>
+        <div class="ui red horizontal label">
+          <i class="trash alternate icon"></i>Remove
+        </div>
+      </td>
+      <td class="single line">
+        <i style="color: green; margin-left: 25px;" class="check icon"></i>
+      </td>
+      <td>
+        <input
+          placeholder="1"
+          required
+          type="number"
+          value=""
+          min="1"
+          max="100"
+        />
+      </td>
+      <td class="right aligned">
+        <div class="rating">
+          <i class="star icon"></i>
+          <i class="star icon"></i>
+          <i class="star icon"></i>
+        </div>
+      </td>
+      <td>
+        <div class="toy-price">
+          408.31
+        </div>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th colspan="5"></th>
+    </tr>
+  </tfoot>
+</table>
+
+<p style="text-align: left; margin-left: 15px;">
+  Shipping Method: Kerry Express<br />Shipping Fee: 35.00 THB
+  <span class="subtotal">
+    Subtotal (2 items): 1,511.54 THB<br /><br />Shipping Fee: 35.00 THB
+    <br />
+    <button style="margin-top: 5px;" class="ui orange button">
+      <i class="cart arrow down icon"></i>
+      Process to Checkout
+    </button>
+  </span>
+</p>
