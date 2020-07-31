@@ -35,7 +35,9 @@ export class ShoppingCartComponent implements OnInit {
   checkout(id: string): void {
     this.service.removeCart(id).subscribe((responseData) => {
       console.log(responseData);
-      this.router.navigate(['shipping']);
+      this.router.navigate(['shipping'], {
+        queryParams: { order: JSON.stringify(this.carts) },
+      });
     });
   }
 }
