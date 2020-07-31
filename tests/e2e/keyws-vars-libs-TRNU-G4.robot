@@ -130,15 +130,15 @@ ${PAYMENT_ELEMENT}    option_gsb
 # Address/Shipping page.
 #-----------------------------------------------------------------------------
 พิมพ์ชื่อที่อยู่ 1
-    Input Text    id=input_address1    บ้านเลขที่ 99/99 ซอยหัวหอม ถนนลูกรัง แขวงเสื้อตากไว้ เขตปลอดเชื้อ
+    Input Text    id=input_address1    179 ซอย รัชดาภิเษก 36 จันทรเกษม
 พิมพ์ชื่อที่อยู่ 2
     Input Text    id=input_address2    -
 พิมพ์ชื่อ City
-    Input Text    id=input_city    -
+    Input Text    id=input_city    จตุจักร
 พิมพ์ชื่อ Province
-    Input Text    id=input_province    จังหวัดสามช่า
+    Input Text    id=input_province    กรุงเทพ
 พิมพ์รหัสไปรษณีย์
-    Input Text    id=input_postcode    99999
+    Input Text    id=input_postcode    10900
 กดปุ่มยืนยัน
     Click Element    id=button_address
 #-----------------------------------------------------------------------------
@@ -173,21 +173,22 @@ ${PAYMENT_ELEMENT}    option_gsb
 ตรวจสอบ Slip ID YYYYMMDDSEQ
     Wait Until Page Contains Element    id=slip_id
     #Wait Until Element Contains    id=slip_id    ${SLIP_ID}
+ตรวจสอบชื่อและนามสกุล
+    Wait Until Element Contains    id=customer_name    อัครเดช สิริวัฒน์
 ตรวจสอบTotal Price
-    Wait Until Page Contains Element    id=total_price
     Wait Until Element Contains    id=total_price    ${TOTAL_PRICE}
 ตรวจสอบ Shipping type
     Wait Until Page Contains Element    id=shipping_type
 ตรวจสอบ Location: ที่อยู่ 1
-    Wait Until Element Contains    id=input_address1    บ้านเลขที่ 99/99 ซอยหัวหอม ถนนลูกรัง แขวงเสื้อตากไว้ เขตปลอดเชื้อ
+    Wait Until Element Contains    id=input_address1    179 ซอย รัชดาภิเษก 36 จันทรเกษม
 ตรวจสอบ Location: ที่อยู่ 2
     Wait Until Element Contains    id=input_address2    -
 ตรวจสอบ Location: City
-    Wait Until Element Contains    id=input_city    -
+    Wait Until Element Contains    id=input_city    จตุจักร
 ตรวจสอบ Location: Province
-    Wait Until Element Contains    id=input_province    จังหวัดสามช่า
+    Wait Until Element Contains    id=input_province    กรุงเทพ
 ตรวจสอบ Location: รหัสไปรษณีย์
-    Wait Until Element Contains    id=input_postcode    99999
+    Wait Until Element Contains    id=input_postcode    10900
 ปิด Browser
     Close Browser
 #-----------------------------------------------------------------------------
