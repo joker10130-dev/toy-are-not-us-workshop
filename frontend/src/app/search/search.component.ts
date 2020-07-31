@@ -47,6 +47,8 @@ export class SearchComponent implements OnInit {
   public onSubmit(): void {
     this.age = this.f.age.value;
     this.gender = this.f.gender.value;
+    this.toys = this.toys.filter((t) => t.age === this.age);
+    this.toys = this.toys.filter((t) => t.gender === this.gender);
     console.log(this.age, this.gender);
   }
 }

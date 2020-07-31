@@ -4,8 +4,13 @@
   <div class="horizontal">
     <div class="fullwidth">
       <label for="cars">Age </label>
-      <select id="select_age" style="width: 80%; margin: 10px;" (change)="changeAge($event)" formControlName="age">
-        <option id="baby" value="baby">Baby</option>
+      <select
+        id="select_age"
+        style="width: 80%; margin: 10px;"
+        (change)="changeAge($event)"
+        formControlName="age"
+      >
+        <option id="baby" value="Baby">Baby</option>
         <option id="3_to_5" value="3_to_5">3 to 5</option>
         <option id="6_to_8" value="6_to_8">6 to 8</option>
         <option id="Toddler" value="Toddler">Toddler</option>
@@ -15,10 +20,15 @@
     </div>
     <div class="fullwidth">
       <span>Gender </span>
-      <select id="select_gender" style="width: 80%; margin: 10px;" (change)="changeGender($event)" formControlName="gender">
-        <option id="neutral" value="neutral">Neutral</option>
-        <option id="male" value="male">Male</option>
-        <option id="female" value="female">Female</option>
+      <select
+        id="select_gender"
+        style="width: 80%; margin: 10px;"
+        (change)="changeGender($event)"
+        formControlName="gender"
+      >
+        <option id="neutral" value="Neutral">Neutral</option>
+        <option id="male" value="Male">Male</option>
+        <option id="female" value="Female">Female</option>
       </select>
       <i class="venus mars icon"></i>
     </div>
@@ -39,7 +49,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let toy of toys; let i = index" (click)="onProductClick(toy)" routerLink="/product-detail" [queryParams]="{toy: toy | json }" id={{toy.toyId}}>
+    <tr
+      *ngFor="let toy of toys; let i = index"
+      (click)="onProductClick(toy)"
+      routerLink="/product-detail"
+      [queryParams]="{ toy: toy | json }"
+      id="{{ toy.toyId }}"
+    >
       <td>{{ toy.toyName }}</td>
       <td>{{ toy.gender }}</td>
       <td>{{ toy.age }}</td>
