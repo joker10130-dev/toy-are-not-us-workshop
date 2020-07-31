@@ -11,6 +11,8 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private service: ApiService) {}
   public carts: ToyCart[];
   public allItemQuantities = 0;
+  public totalPrice = 0;
+  public shippingFee = 35;
   ngOnInit(): void {
     this.getAllCarts();
   }
@@ -18,6 +20,7 @@ export class ShoppingCartComponent implements OnInit {
     this.service.getCarts().subscribe((carts) => {
       for (const item of carts) {
         this.allItemQuantities += Number(item.quantity);
+        this.totalPrice += Number(item.price);
       }
       return (this.carts = carts);
     });

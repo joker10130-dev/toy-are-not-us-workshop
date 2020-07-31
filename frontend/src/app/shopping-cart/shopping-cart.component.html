@@ -55,7 +55,7 @@
 <p style="text-align: left; margin-left: 15px;">
   Shipping Method: Kerry Express<br />Shipping Fee: 35.00 THB
   <span class="subtotal">
-    Subtotal ({{allItemQuantities}} items): 1,511.54 THB<br /><br />Shipping Fee: 35.00 THB
+    Subtotal ({{allItemQuantities}} items): {{totalPrice * 31.53 | number : '1.2'}} THB<br /><br />Shipping Fee: {{shippingFee | number : '1.2'}} THB
     <br />
     <button style="margin-top: 5px;" class="ui orange button">
       <i class="cart arrow down icon"></i>
