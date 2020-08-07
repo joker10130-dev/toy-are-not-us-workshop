@@ -1,0 +1,1 @@
+INSERT INTO toy (id, name, gender, age, price, availability, brand) VALUES (4, 'Hoppity Ball 26', 'Neutral', '3_to_5', 29.95, true, 'SportsFun')
