@@ -10,14 +10,10 @@ import java.util.Optional;
 
 @RestController
 public class ProductController {
-    /*
-    @Autowired
-    private ProductRepository productRepository;
-     */
 
     @GetMapping("/api/v1/products")
     public ProductResponse getProductsByAgeAndGender(@RequestParam Optional<String> age, @RequestParam Optional<String> gender) {
-        // Optional<Product> product = productRepository.findById(id);
+
         return new ProductResponse(1, "name", gender.orElse("default_gender"), age.orElse("default_age"), 500, true, "group4");
     }
 }
